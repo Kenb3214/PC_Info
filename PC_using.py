@@ -10,7 +10,7 @@ import datetime
 
 try:
     config = configparser.ConfigParser()
-    config.read('PC_Info_seting.ini', encoding='utf-8')
+    config.read('PC_Info_setting.ini', encoding='utf-8')
     upd2 = config['small_windows']['update_time']
     top = config['small_windows']['at_top']
 except:
@@ -80,7 +80,7 @@ try:
             elif upd2 == "5":
                 samllroot.after(500, update_stats)
             else:
-                tk.messagebox.showerror("Error", "PC_Info_seting.ini Update time error")
+                tk.messagebox.showerror("Error", "PC_Info_setting.ini Update time error")
 
         update_stats()
 
