@@ -63,10 +63,6 @@ try:
         pyd = config['main']['pyd']
     except:
         tk.messagebox.showerror('Error', 'PC_Info_setting.ini load pyd error')
-    try:
-        diskcheck = config['main']['disk_check']
-    except:
-        tk.messagebox.showerror('Error', 'PC_Info_setting.ini load disk check error')
 
     try:
         (psutil.disk_usage(f'{dickch}:'))
@@ -104,15 +100,6 @@ try:
             file.write(f"\n{datetime.datetime.now()} PC_Info setup error error")
             file.close()
 
-    if diskcheck == True:
-        try:
-            diskname = ["ABCDEFGHIGKLMNOPQRST"]
-            for x in diskname:
-                psutil.disk_usage(f'{x}:')
-            else:
-                tk.messagebox.showerror("Error", "NULL")
-        except:
-            tk.messagebox.showerror("Error", "disk check error error")
     try:
         psutil.disk_usage('D:')
         diskD = True
