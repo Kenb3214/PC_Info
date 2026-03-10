@@ -180,7 +180,7 @@ def main():
              poC = "disk C is now,less then 10%"
          elif lang == "CN":
              CDlang = "本機磁碟C"
-             poC = "CDlang = 本機磁碟C 很新，佔用小於10%"
+             poC = "本機磁碟C 很新，佔用小於10%"
      else:
          if lang == "ENG":
              CDlang = "Disk C"
