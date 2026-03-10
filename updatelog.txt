@@ -30,12 +30,13 @@
 -NVML GPU Temperature
 -samll windows to look PC useing(allway at the top)
 2025/11/29
-`1.81
+-1.81
 -PC useing can choose from local or app to start
+2026/3/10
+-1.81(Not update)
+-Upload to GitHub (Private)
 will update
 -CPU Temperature(It may be need admin/UAC to run)
 -disk name
 -SMART(It mat be need admin/UAC to run)
--RAM Temperature(DDR4 need ECC)(It mat be need admin/UAC to run)
-maybe update
--AMD GPU (No have AMD GPU now)
+-RAM Temperature(DDR4 need ECC)(It mat be need admin/UAC to run
