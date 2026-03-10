@@ -8,10 +8,9 @@ import cpuinfo
 import wmi
 import pynvml
 import subprocess
-import threading
-import setuptools
+import threading #not use now
 from setuptools import setup, Extension
-import ctypes
+import ctypes #not use now
 import time
 import datetime
 import random
@@ -477,7 +476,7 @@ def main():
          file.close()
 
  def app():
-    messagebox.showinfo("about this app",f"about this app\napp name: PC_Info\napp version: {Version}\nMake by: Me\nThis app in {(os.getcwd()) } \nlink: NULL ")
+    messagebox.showinfo("about this app",f"about this app\napp name: PC_Info\napp version: {Version}\nMake by: Kenb3214\nThis app in {(os.getcwd()) } \nlink:https://github.com/Kenb3214/PC_Info")
  def update_log():
     messagebox.showinfo("update log", f"Update.txt")
  def Useing():
