@@ -22,5 +22,5 @@
  - psutil==7.2.2
  - py-cpuinfo==9.0.0
  - pynvml==13.0.1
- - WMI==1.5.1\
+ - WMI==1.5.1
  
