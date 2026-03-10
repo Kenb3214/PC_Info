@@ -38,5 +38,6 @@
 will update
 -CPU Temperature(It may be need admin/UAC to run)
 -disk name
+may be(It hard):
 -SMART(It mat be need admin/UAC to run)
 -RAM Temperature(DDR4 need ECC)(It mat be need admin/UAC to run
