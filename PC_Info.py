@@ -160,7 +160,7 @@ except:
 def main():
 
  root = tk.Tk()
- root.title("PC Info v1.7")
+ root.title(f"PC Info {Version}")
  root.geometry("540x525")
 
  if dickch == "C": #Disk

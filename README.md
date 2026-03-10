@@ -14,11 +14,12 @@
  - at_top = True(at top/是否一直置頂)
 # Note
  - 目前只可在Windows上使用(wmi)
+# Update Log
+ - 2026/3/10 1.81 上線Github
 # 主要依賴
+ - python==3.14
  - nvidia-ml-py==13.590.48
  - psutil==7.2.2
  - py-cpuinfo==9.0.0
  - pynvml==13.0.1
  - WMI==1.5.1
-# Update Log
- - 2026/3/10 1.81 上線Githud
