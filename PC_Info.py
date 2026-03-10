@@ -52,7 +52,7 @@ try:
     except:
         tk.messagebox.showerror('Error', 'PC_Info_seting.ini load small windows error')
     try:
-        runin = config['main']['pc_useing']
+        runin = config['main']['pc_using']
     except:
         tk.messagebox.showerror('Error', 'PC_Info_seting.ini load pc useing error')
     try:
