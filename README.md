@@ -12,6 +12,7 @@
 -small_windows
  - update_time = 2(1-5s)
  - at_top = True(at top/是否一直置頂)
-
+# Note
+ - 目前只可在Windows上使用(wmi)
 # Update Log
  - 2026/3/10 1.81 上線Githud
