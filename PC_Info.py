@@ -27,51 +27,51 @@ if check_already_running():
 try:
     try:
         config = configparser.ConfigParser()
-        config.read('PC_Info_seting.ini', encoding='utf-8')
+        config.read('PC_Info_setting.ini', encoding='utf-8')
     except:
         file = open('error_log.txt', 'a')
-        file.write(f"\n{datetime.datetime.now()}PC_Info_seting.ini not found")
+        file.write(f"\n{datetime.datetime.now()}PC_Info_setting.ini not found")
         file.close()
-        tk.messagebox.showerror('Error', 'PC_Info_seting.ini not found')
+        tk.messagebox.showerror('Error', 'PC_Info_setting.ini not found')
         sys.exit()
 
     try:
         Version = config['main']['Version']
     except:
-        tk.messagebox.showerror('Error', 'PC_Info_seting.ini load Version error')
+        tk.messagebox.showerror('Error', 'PC_Info_setting.ini load Version error')
     try:
         lang = config['main']['language']
     except:
-        tk.messagebox.showerror('Error', 'PC_Info_seting.ini load Language error')
+        tk.messagebox.showerror('Error', 'PC_Info_setting.ini load Language error')
     try:
         upd = config['main']['update_time']
     except:
-        tk.messagebox.showerror('Error', 'PC_Info_seting.ini load main Update time error')
+        tk.messagebox.showerror('Error', 'PC_Info_setting.ini load main Update time error')
     try:
         upd2 = config['small_windows']['update_time']
     except:
-        tk.messagebox.showerror('Error', 'PC_Info_seting.ini load small windows error')
+        tk.messagebox.showerror('Error', 'PC_Info_setting.ini load small windows error')
     try:
         runin = config['main']['pc_using']
     except:
-        tk.messagebox.showerror('Error', 'PC_Info_seting.ini load pc useing error')
+        tk.messagebox.showerror('Error', 'PC_Info_settng.ini load pc useing error')
     try:
         dickch = config['main']['main_disk_info']
     except:
-        tk.messagebox.showerror('Error', 'PC_Info_seting.ini load disk info error')
+        tk.messagebox.showerror('Error', 'PC_Info_setting.ini load disk info error')
     try:
         pyd = config['main']['pyd']
     except:
-        tk.messagebox.showerror('Error', 'PC_Info_seting.ini load pyd error')
+        tk.messagebox.showerror('Error', 'PC_Info_setting.ini load pyd error')
     try:
         diskcheck = config['main']['disk_check']
     except:
-        tk.messagebox.showerror('Error', 'PC_Info_seting.ini load disk check error')
+        tk.messagebox.showerror('Error', 'PC_Info_setting.ini load disk check error')
 
     try:
         (psutil.disk_usage(f'{dickch}:'))
     except:
-        tk.messagebox.showerror('Error', 'ERROR PC_Info_seting.ini disk valid error')
+        tk.messagebox.showerror('Error', 'ERROR PC_Info_setting.ini disk valid error')
         file = open('error_log.txt', 'a')
         file.write(f"\n{datetime.datetime.now()} disk valid error")
         file.close()
@@ -86,7 +86,7 @@ try:
         makeby = "make by"
         OSis = "OS system"
     else:
-        tk.messagebox.showerror("Error", "PC_Info_seting.ini Language error")
+        tk.messagebox.showerror("Error", "PC_Info_setting.ini Language error")
         file = open('error_log.txt', 'a')
         file.write(f"\n{datetime.datetime.now()} Language error")
         file.close()
@@ -290,13 +290,13 @@ def main():
              gpu_label.config(text=f"GPU useing (%): {util.gpu}%")
              gpu_gb_label.config(text=f"GPU RAM use (MB): {mem.used / 1024 ** 2:.0f} / {mem.total / 1024 ** 2:.0f} MB\nGPU RAM use (GB): {mem.used / 1024 ** 3:.0f} / {mem.total / 1024 ** 3:.0f} GB\nGPU temperature : {temperature}'C")
              config['test'] = {'GPU_test': 'late update'}
-             with open('PC_Info_seting.ini', 'w') as configfile:
+             with open('PC_Info_setting.ini', 'w') as configfile:
                  config.write(configfile)
          except pynvml.NVMLError:
              gpu_label.config(text="GPU RAM (%): not available")
              gpu_gb_label.config(text="GPU RAM (GB): not available")
              config['test'] = {'GPU_test': 'False'}
-             with open('PC_Info_seting.ini', 'w') as configfile:
+             with open('PC_Info_setting.ini', 'w') as configfile:
                 config.write(configfile)
      else:
          gpu_label.config(text="GPU RAM (%): not available")
@@ -313,7 +313,7 @@ def main():
      elif upd == "5":
          root.after(5000, update_stats)
      else:
-         tk.messagebox.showerror("Error", "PC_Info_seting.ini Update time error")
+         tk.messagebox.showerror("Error", "PC_Info_setting.ini Update time error")
 
 
  # 啟動第一次更新
@@ -541,12 +541,12 @@ def samllmain():
                 temperature = pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU)
                 gpu_label.config(text=f"GPU: {util.gpu}% {temperature}'C")
                 config['test'] = {'GPU_test': 'late update'}
-                with open('PC_Info_seting.ini', 'w') as configfile:
+                with open('PC_Info_setting.ini', 'w') as configfile:
                     config.write(configfile)
             except pynvml.NVMLError:
                 gpu_label.config(text="GPU RAM (%): not available")
                 config['test'] = {'GPU_test': 'False'}
-                with open('PC_Info_seting.ini', 'w') as configfile:
+                with open('PC_Info_setting.ini', 'w') as configfile:
                     config.write(configfile)
         else:
             gpu_label.config(text="GPU(%): not available")
@@ -561,7 +561,7 @@ def samllmain():
         elif upd2 == "5":
             samllroot.after(500, update_stats)
         else:
-            tk.messagebox.showerror("Error", "PC_Info_seting.ini Update time error")
+            tk.messagebox.showerror("Error", "PC_Info_setting.ini Update time error")
 
     update_stats()
 
