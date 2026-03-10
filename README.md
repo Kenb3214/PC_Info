@@ -12,3 +12,6 @@
 -small_windows
  - update_time = 2(1-5s)
  - at_top = True(at top/是否一直置頂)
+
+# Update Log
+ - 2026/3/10 1.81 上線Githud
