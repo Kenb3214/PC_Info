@@ -34,7 +34,7 @@
 -PC useing can choose from local or app to start
 2026/3/10
 -1.81(Not update)
--Upload to GitHub (Private)
+-Upload to GitHub
 will update
 -CPU Temperature(It may be need admin/UAC to run)
 -disk name
