@@ -15,7 +15,9 @@
 # Note
  - 目前只可在Windows上使用(wmi)
 # Update Log
- - 2026/3/10 1.81 上線Github
+ - 2025/9/20 1.0 Start
+ - 2025/10/12 1.5 add PC Info can get txt file
+ - 2026/3/10 1.81 上線/Upload to Github
 # 主要依賴
  - python==3.14
  - nvidia-ml-py==13.590.48
@@ -23,4 +25,3 @@
  - py-cpuinfo==9.0.0
  - pynvml==13.0.1
  - WMI==1.5.1
- 
