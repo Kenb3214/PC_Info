@@ -17,6 +17,7 @@
 # Update Log
  - 2025/9/20 1.0 Start
  - 2025/10/12 1.5 add PC Info can get txt file
+ - 2025/11/27 1.8 add NVML GPU Temperature and PC using
  - 2026/3/10 1.81 上線/Upload to Github
 # 主要依賴
  - python==3.14
