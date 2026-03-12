@@ -1,4 +1,4 @@
-# PC_Info(version = 1.81)
+# PC_Info(version = 1.82)
 一個查看電腦硬件的程式.
 
 # PC_useing
