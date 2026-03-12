@@ -21,9 +21,9 @@ try:
         samllroot = tk.Tk()
         samllroot.title("PC useing")
         samllroot.geometry("200x100")
-        if top == True:
+        if top == "True":
             samllroot.attributes("-topmost", True)
-        elif top == False:
+        elif top == "False":
             samllroot.attributes("-topmost", False)
         else:
             samllroot.attributes("-topmost", True)
