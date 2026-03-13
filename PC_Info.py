@@ -46,6 +46,10 @@ try:
     except:
         tk.messagebox.showerror('Error', 'PC_Info_setting.ini load Language error')
     try:
+        encoding = config['main']['encoding']
+    except:
+        tk.messagebox.showerror('Error', 'PC_Info_setting.ini load encoding error')
+    try:
         upd = config['main']['update_time']
     except:
         tk.messagebox.showerror('Error', 'PC_Info_setting.ini load main Update time error')
@@ -89,7 +93,7 @@ try:
             OSis = (ENG["OSis"])
     else:
         try:
-            with open(f"language\\{lang}.json","r") as f:
+            with open(f"language\\{lang}.json","r",encoding=encoding) as f:
                 lang = json.load(f)
                 bname = (lang["bname"])
                 makeby = (lang["makeby"])
