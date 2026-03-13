@@ -88,11 +88,17 @@ try:
             makeby = (ENG["makeby"])
             OSis = (ENG["OSis"])
     else:
-        tk.messagebox.showerror("Error", "PC_Info_setting.ini Language error")
-        with open('error_log.txt', 'a') as f:
-            f.write(f"\n{datetime.datetime.now()} Language error")
-        sys.exit()
-
+        try:
+            with open(f"language\\{lang}.json","r") as f:
+                lang = json.load(f)
+                bname = (lang["bname"])
+                makeby = (lang["makeby"])
+                OSis = (lang["OSis"])
+        except:
+            tk.messagebox.showerror("Error", "PC_Info_setting.ini Language error")
+            with open('error_log.txt', 'a') as f:
+                f.write(f"\n{datetime.datetime.now()} Language error")
+            sys.exit()
     if pyd == True:
         try:
             setup(
