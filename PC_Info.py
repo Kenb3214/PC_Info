@@ -1,7 +1,9 @@
 import tkinter as tk
+from os import error
 from tkinter import messagebox
 import sys,os
 import configparser
+import json
 import psutil
 import platform
 import cpuinfo
@@ -74,18 +76,21 @@ try:
         sys.exit()
 
     if lang == "CN":
-        bname = "主板是"
-        makeby = "生產商是"
-        OSis = "操作系統"
+        with open("language\\CN.json","r",encoding="utf-8") as f:
+            CN = json.load(f)
+            bname = (CN["bname"])
+            makeby = (CN["makeby"])
+            OSis = (CN["OSis"])
     elif lang == "ENG":
-        bname = "Board is"
-        makeby = "make by"
-        OSis = "OS system"
+        with open("language\\ENG.json","r") as f:
+            ENG = json.load(f)
+            bname = (ENG["bname"])
+            makeby = (ENG["makeby"])
+            OSis = (ENG["OSis"])
     else:
         tk.messagebox.showerror("Error", "PC_Info_setting.ini Language error")
-        file = open('error_log.txt', 'a')
-        file.write(f"\n{datetime.datetime.now()} Language error")
-        file.close()
+        with open('error_log.txt', 'a') as f:
+            f.write(f"\n{datetime.datetime.now()} Language error")
         sys.exit()
 
     if pyd == True:
@@ -331,6 +336,7 @@ def main():
          n10 = random.randint(1111111111111111111111111111111111111111, 9999999999999999999999999999999999999999)
          cputest1 = n1 * n2 * n3 * n4 * n5 * n6 * n7 * n8 * n9 * n10
          cputest2 = n1 // n2 // n3 // n4 // n5 // n6 // n7 // n8 // n9 // n10
+         lasttest = cputest1 * cputest2
          count += 1
          if count >= 999:
              break
@@ -464,8 +470,6 @@ def main():
 
  def app():
     messagebox.showinfo("about this app",f"about this app\napp name: PC_Info\napp version: {Version}\nMake by: Kenb3214\nThis app in {(os.getcwd()) } \nlink:https://github.com/Kenb3214/PC_Info")
- def update_log():
-    messagebox.showinfo("update log", f"Update.txt")
  def Useing():
      if runin == "app":
          try:
@@ -479,7 +483,6 @@ def main():
  tk.Button(root, text="All Disk useing", command=Disk_Info).grid(pady=5)
  tk.Button(root, text="cpu test", command=PC_test).grid(pady=5)
  tk.Button(root, text="about this app", command=app).grid(pady=5)
- tk.Button(root, text="update log", command=update_log).grid(pady=5)
  tk.Button(root, text="get txt file", command=txtfile).grid(pady=5)
  tk.Button(root, text="exit", command=root.destroy).grid(pady=5)
 
