@@ -1,5 +1,4 @@
 import tkinter as tk
-from os import error
 from tkinter import messagebox
 import sys,os
 import configparser
@@ -103,7 +102,7 @@ try:
             with open('error_log.txt', 'a') as f:
                 f.write(f"\n{datetime.datetime.now()} Language error")
             sys.exit()
-    if pyd == True:
+    if pyd == "True":
         try:
             setup(
                 name="PC_Info",
@@ -142,6 +141,7 @@ try:
         diskH = False
     try:
         psutil.disk_usage('I:')
+        diskI = True
     except:
         diskI = False
     try:
