@@ -15,6 +15,7 @@ import ctypes #not use now
 import time
 import datetime
 import random
+import PC_using
 
 def check_already_running():
     current = psutil.Process().pid
@@ -37,9 +38,10 @@ try:
         sys.exit()
 
     try:
-        Version = config['main']['Version']
+        Version = config.get('main', 'version', fallback='unknown')
     except:
         tk.messagebox.showerror('Error', 'PC_Info_setting.ini load Version error')
+        Version = 'unknown'
     try:
         lang = config['main']['language']
     except:
@@ -65,9 +67,10 @@ try:
     except:
         tk.messagebox.showerror('Error', 'PC_Info_setting.ini load disk info error')
     try:
-        pyd = config['main']['pyd']
+        pyd = config.getboolean('main', 'pyd', fallback=False)
     except:
         tk.messagebox.showerror('Error', 'PC_Info_setting.ini load pyd error')
+        pyd = False
 
     try:
         (psutil.disk_usage(f'{dickch}:'))
@@ -85,14 +88,15 @@ try:
             makeby = (CN["makeby"])
             OSis = (CN["OSis"])
     elif lang == "ENG":
-        with open("language\\ENG.json","r") as f:
+        with open("language\\ENG.json","r",encoding="utf-8") as f:
             ENG = json.load(f)
             bname = (ENG["bname"])
             makeby = (ENG["makeby"])
             OSis = (ENG["OSis"])
     else:
         try:
-            with open(f"language\\{lang}.json","r",encoding=encoding) as f:
+            file_encoding = encoding if encoding != 'auto' else 'utf-8'
+            with open(f"language\\{lang}.json","r",encoding=file_encoding) as f:
                 lang = json.load(f)
                 bname = (lang["bname"])
                 makeby = (lang["makeby"])
@@ -102,7 +106,7 @@ try:
             with open('error_log.txt', 'a') as f:
                 f.write(f"\n{datetime.datetime.now()} Language error")
             sys.exit()
-    if pyd == "True":
+    if pyd:
         try:
             setup(
                 name="PC_Info",
@@ -499,73 +503,7 @@ def main():
  root.mainloop()
 
 def samllmain():
-    def mainlink():
-        main()
-        samllroot.destroy()
-    samllroot = tk.Tk()
-    samllroot.title("PC useing")
-    samllroot.geometry("200x100")
-    samllroot.attributes("-topmost", True)
-    cpu_label = tk.Label(samllroot, text="CPU use (%): ...")
-    cpu_label.grid(row=0, column=0, columnspan=2)
-    ram_label = tk.Label(samllroot, text="RAM use (%): ...")
-    ram_label.grid(row=1, column=0, columnspan=2)
-    gpu_label = tk.Label(samllroot, text="GPU RAM use (%): ...")
-    gpu_label.grid(row=3, column=0, columnspan=2)
-
-    try:
-        pynvml.nvmlInit()
-        gpu_available = True
-    except pynvml.NVMLError:
-        gpu_available = False
-
-    def update_stats():
-        try:
-            cpu = psutil.cpu_percent(interval=0.1)
-            cpu_label.config(text=f"CPU: {cpu}%")
-        except:
-            tk.messagebox.showerror("Error", "Error CPU update ERROR")
-            file = open('error_log.txt', 'a')
-            file.write(f"\n{datetime.datetime.now()} CPU update ERROR")
-            file.close()
-        try:
-            ram = psutil.virtual_memory()
-            ram_label.config(text=f"RAM: {ram.percent}%")
-        except:
-            tk.messagebox.showerror("Error", "Error RAM update ERROR")
-        if gpu_available:
-            try:
-                handle = pynvml.nvmlDeviceGetHandleByIndex(0)
-                mem = pynvml.nvmlDeviceGetMemoryInfo(handle)
-                util = pynvml.nvmlDeviceGetUtilizationRates(handle)
-                temperature = pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU)
-                gpu_label.config(text=f"GPU: {util.gpu}% {temperature}'C")
-                config['test'] = {'GPU_test': 'late update'}
-                with open('PC_Info_setting.ini', 'w') as configfile:
-                    config.write(configfile)
-            except pynvml.NVMLError:
-                gpu_label.config(text="GPU RAM (%): not available")
-                config['test'] = {'GPU_test': 'False'}
-                with open('PC_Info_setting.ini', 'w') as configfile:
-                    config.write(configfile)
-        else:
-            gpu_label.config(text="GPU(%): not available")
-        if upd2 == "1":
-            samllroot.after(100, update_stats)
-        elif upd2 == "2":
-            samllroot.after(200, update_stats)
-        elif upd2 == "3":
-            samllroot.after(300, update_stats)
-        elif upd2 == "4":
-            samllroot.after(400, update_stats)
-        elif upd2 == "5":
-            samllroot.after(500, update_stats)
-        else:
-            tk.messagebox.showerror("Error", "PC_Info_setting.ini Update time error")
-
-    update_stats()
-
-    tk.Button(samllroot,text="full windows",command=mainlink).grid(pady=4)
+    PC_using.main()
 
 if __name__ == "__main__":
     main()
